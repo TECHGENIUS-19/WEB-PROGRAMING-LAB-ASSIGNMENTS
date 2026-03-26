@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Portal</title>
+    <style>
+        body {
+            background-color: skyblue;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: black;
+            padding: 20px;
+        }
+
+        .nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .nav a {
+            background-color: darkblue;
+            color: white;
+            padding: 10px 15px;
+            margin: 5px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .nav a:hover {
+            background-color: navy;
+        }
+
+        .section {
+            background-color: darkblue;
+            color: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 60%;
+            border-radius: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Student Registration Portal</h1>
+
+    <div class="nav">
+        <a href="#personal">Personal Information</a>
+        <a href="#academic">Academic Details</a>
+        <a href="#address">Address Information</a>
+        <a href="#account">Account Credentials</a>
+    </div>
+
+    <form onsubmit="showMessage(); return false;">
+
+        <div class="section" id="personal">
+          <h1>PRAKASH KUMAR SINGH</h1>
+               <h1>24BCI0213</h1>
+            <h2>Personal Information</h2>
+
+            <label>Full Name</label>
+            <input type="text" required>
+
+            <label>Date of Birth</label>
+            <input type="date" required>
+
+            <label>Gender</label>
+            <select required>
+                <option value="">Select</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+
+            <label>Email Address</label>
+            <input type="email" required>
+
+            <label>Mobile Number</label>
+            <input type="text" required>
+        </div>
+
+        <div class="section" id="academic">
+            <h2>Academic Details</h2>
+
+            <label>Register Number</label>
+            <input type="text" required>
+
+            <label>Degree Program</label>
+            <input type="text" required>
+
+            <label>Department</label>
+            <input type="text" required>
+
+            <label>Year of Study</label>
+            <input type="text" required>
+        </div>
+
+        <div class="section" id="address">
+            <h2>Address Information</h2>
+
+            <label>Door Number</label>
+            <input type="text" required>
+
+            <label>Street Name</label>
+            <input type="text" required>
+
+            <label>City</label>
+            <input type="text" required>
+
+            <label>State</label>
+            <input type="text" required>
+
+            <label>Pincode</label>
+            <input type="text" required>
+        </div>
+
+        <div class="section" id="account">
+            <h2>Account Credentials</h2>
+
+            <label>Username</label>
+            <input type="text" required>
+
+            <label>Password</label>
+            <input type="password" required>
+
+            <label>Confirm Password</label>
+            <input type="password" required>
+        </div>
+
+        <div class="section" style="text-align:center;">
+            <button class="btn">Submit</button>
+        </div>
+
+    </form>
+
+    <script>
+        function showMessage() {
+            alert("Form Submitted Successfully");
+        }
+    </script>
+
+</body>
+</html>
