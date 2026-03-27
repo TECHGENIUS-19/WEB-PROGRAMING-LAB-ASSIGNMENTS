@@ -1,1 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiplication Table</title>
+</head>
+<body>
 
+<h2>Multiplication Table</h2>
+
+Enter Number: <input type="number" id="num"><br><br>
+<button onclick="printTable()">Print Table</button>
+
+<p id="output"></p>
+
+<script>
+function printTable() {
+    var num = parseInt(document.getElementById("num").value);
+    var i = 1;
+    var result = "";
+
+    do {
+        result += num + " x " + i + " = " + (num * i) + "<br>";
+        i++;
+    } while (i <= 10);
+
+    document.getElementById("output").innerHTML = result;
+}
+</script>
+<h1>PRAKASH KUMAR SINGH</h1>
+<h1>24BCI0213</h1>
+</body>
+</html>
