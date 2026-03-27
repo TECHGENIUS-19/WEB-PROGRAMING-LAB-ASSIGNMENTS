@@ -1,1 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>While Loop Numbers</title>
+</head>
+<body>
 
+<h2>Print Numbers from 1 to N</h2>
+
+Enter N: <input type="number" id="num"><br><br>
+<button onclick="printNumbers()">Print</button>
+
+<p id="output"></p>
+
+<script>
+function printNumbers() {
+    var n = parseInt(document.getElementById("num").value);
+    var i = 1;
+    var result = "";
+
+    while (i <= n) {
+        result += i + " ";
+        i++;
+    }
+
+    document.getElementById("output").innerHTML = result;
+}
+</script>
+<h1>PRAKASH KUMAR SINGH</h1>
+<h1>24BCI0213</h1>
+</body>
+</html>
