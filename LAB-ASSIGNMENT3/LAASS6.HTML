@@ -1,1 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Information System</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f4; }
+        h2 { text-align: center; }
+        .container { width: 60%; margin: auto; background: white; padding: 20px; }
+        input, button { margin: 5px; padding: 8px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        table, th, td { border: 1px solid black; }
+        th, td { padding: 10px; text-align: center; }
+    </style>
+</head>
+<body>
 
+<div class="container">
+<h2>Student Information System</h2>
+
+<form id="studentForm">
+    Name: <input type="text" id="name"><br>
+    Age: <input type="number" id="age"><br>
+    Course: <input type="text" id="course"><br>
+
+    <button type="button" onclick="addStudent()">Add</button>
+    <button type="button" onclick="resetForm()">Reset</button>
+</form>
+
+<table id="studentTable">
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Course</th>
+    </tr>
+</table>
+
+</div>
+
+<script>
+var students = [];
+
+function Student(name, age, course) {
+    this.name = name;
+    this.age = age;
+    this.course = course;
+
+    this.getData = function() {
+        return "<tr><td>" + this.name + "</td><td>" + this.age + "</td><td>" + this.course + "</td></tr>";
+    }
+}
+
+function addStudent() {
+    var name = document.getElementById("name").value;
+    var age = document.getElementById("age").value;
+    var course = document.getElementById("course").value;
+
+    var studentObj = new Student(name, age, course);
+    students.push(studentObj);
+
+    displayStudents();
+    resetForm();
+}
+
+function displayStudents() {
+    var table = document.getElementById("studentTable");
+    table.innerHTML = "<tr><th>Name</th><th>Age</th><th>Course</th></tr>";
+
+    for (var i = 0; i < students.length; i++) {
+        table.innerHTML += students[i].getData();
+    }
+}
+
+function resetForm() {
+    document.getElementById("studentForm").reset();
+    document.getElementById("name").focus();
+}
+</script>
+<h1>PRAKASH KUMAR SINGH</h1>
+<h1>24BCI0213</h1>
+</body>
+</html>
