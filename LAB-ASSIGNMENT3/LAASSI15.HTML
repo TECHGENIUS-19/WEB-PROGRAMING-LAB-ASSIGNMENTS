@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Font Customization Tool</title>
+</head>
+<body>
+
+<h2>Font Customization Tool</h2>
+
+<p id="text">Customize this text</p>
+
+<fieldset>
+<legend>Font Size</legend>
+<input type="range" id="size" min="10" max="50" oninput="changeStyle()">
+</fieldset>
+
+<fieldset>
+<legend>Text Color</legend>
+<input type="color" id="color" onchange="changeStyle()">
+</fieldset>
+
+<fieldset>
+<legend>Background Color</legend>
+<input type="color" id="bg" onchange="changeStyle()">
+</fieldset>
+
+<script>
+function changeStyle() {
+    var text = document.getElementById("text");
+    var size = document.getElementById("size").value;
+    var color = document.getElementById("color").value;
+    var bg = document.getElementById("bg").value;
+
+    text.style.fontSize = size + "px";
+    text.style.color = color;
+    text.style.backgroundColor = bg;
+}
+</script>
+<h1>PRAKASH KUMAR SINGH</h1>
+<h1>24BCI0213</h1>
+</body>
+</html>
