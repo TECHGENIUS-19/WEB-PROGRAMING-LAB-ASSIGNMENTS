@@ -7,20 +7,27 @@
 
 <h2>Area of Rectangle</h2>
 
+Length: <input type="text" id="lengthValue"><br><br>
+Width: <input type="text" id="widthValue"><br><br>
+
+<button onclick="calculateArea()">Calculate</button>
+
 <p id="output"></p>
 
 <script>
-    var lengthValue = 10;
-    var widthValue = 5;
+function calculateArea() {
+    var lengthValue = document.getElementById("lengthValue").value;
+    var widthValue = document.getElementById("widthValue").value;
     var areaResult = lengthValue * widthValue;
 
-    lengthValue = 10.5;
-    widthValue = 5.2;
+    lengthValue = parseFloat(lengthValue);
+    widthValue = parseFloat(widthValue);
     var floatAreaResult = lengthValue * widthValue;
 
     document.getElementById("output").innerHTML =
         "Integer Area: " + areaResult + "<br>" +
         "Floating Point Area: " + floatAreaResult;
+}
 </script>
 <h1>PRAKASH KUMAR SINGH</h1>
 <h1>24BCI0213</h1>
