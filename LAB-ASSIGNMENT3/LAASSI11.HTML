@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Interest Calculator</title>
+</head>
+<body>
+
+<h2>Simple Interest Calculator</h2>
+
+Principal: <input type="number" id="principal" step="any"><br><br>
+Rate (%): <input type="number" id="rate" step="any"><br><br>
+Time: <input type="number" id="time" step="any"><br><br>
+
+<button onclick="calculate()">Calculate</button>
+
+<p id="output"></p>
+
+<script>
+function calculateSI(p, r, t) {
+    return (p * r * t) / 100;
+}
+
+function calculate() {
+    var p = parseFloat(document.getElementById("principal").value);
+    var r = parseFloat(document.getElementById("rate").value);
+    var t = parseFloat(document.getElementById("time").value);
+
+    var result = calculateSI(p, r, t);
+
+    document.getElementById("output").innerHTML = "Simple Interest: " + result;
+}
+</script>
+<h1>PRAKASH KUMAR SINGH</h1>
+<h1>24BCI0213</h1>
+</body>
+</html>
