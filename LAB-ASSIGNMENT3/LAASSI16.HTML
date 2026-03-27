@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Overlapping Image Gallery</title>
+    <style>
+        .container {
+            position: relative;
+            width: 400px;
+            height: 300px;
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Overlapping Image Gallery</h2>
+
+<div class="container">
+    <img src="https://picsum.photos/id/1015/150" style="top:20px; left:20px;" onclick="bringToFront(this)">
+    <img src="https://picsum.photos/id/1025/150" style="top:60px; left:80px;" onclick="bringToFront(this)">
+    <img src="https://picsum.photos/id/1035/150" style="top:100px; left:140px;" onclick="bringToFront(this)">
+</div>
+
+<script>
+var topIndex = 1;
+
+function bringToFront(element) {
+    element.style.zIndex = ++topIndex;
+}
+</script>
+<h1>PRAKASH KUMAR SINGH</h1>
+<h1>24BCI0213</h1>
+</body>
+</html>
