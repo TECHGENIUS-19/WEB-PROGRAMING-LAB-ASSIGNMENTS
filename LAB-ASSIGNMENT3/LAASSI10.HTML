@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkbox Selection</title>
+</head>
+<body>
+
+<h2>Select Subjects</h2>
+
+<input type="checkbox" name="subject" value="Math"> Math<br>
+<input type="checkbox" name="subject" value="Science"> Science<br>
+<input type="checkbox" name="subject" value="English"> English<br>
+<input type="checkbox" name="subject" value="Computer"> Computer<br><br>
+
+<button onclick="countSelected()">Show Selection</button>
+
+<p id="output"></p>
+
+<script>
+function countSelected() {
+    var subjects = document.getElementsByName("subject");
+    var selected = [];
+    var count = 0;
+
+    for (var i = 0; i < subjects.length; i++) {
+        if (subjects[i].checked) {
+            selected.push(subjects[i].value);
+            count++;
+        }
+    }
+
+    document.getElementById("output").innerHTML =
+        "Selected Count: " + count + "<br>Subjects: " + selected.join(", ");
+}
+</script>
+<h1>PRAKASH KUMAR SINGH</h1>
+<h1>24BCI0213</h1>
+</body>
+</html>
