@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Order Form</title>
+</head>
+<body>
+
+<h2>Product Order Form</h2>
+
+<form id="orderForm">
+
+<fieldset>
+<legend>Electronics</legend>
+<input type="checkbox" value="500"> Headphones (500)<br>
+<input type="checkbox" value="1500"> Speaker (1500)<br>
+</fieldset>
+
+<fieldset>
+<legend>Books</legend>
+<input type="checkbox" value="300"> Novel (300)<br>
+<input type="checkbox" value="400"> Textbook (400)<br>
+</fieldset>
+
+<fieldset>
+<legend>Accessories</legend>
+<input type="checkbox" value="200"> Mouse (200)<br>
+<input type="checkbox" value="800"> Keyboard (800)<br>
+</fieldset>
+
+<br>
+<button type="button" onclick="calculateTotal()">Calculate Total</button>
+
+</form>
+
+<p id="output"></p>
+
+<script>
+function calculateTotal() {
+    var items = document.querySelectorAll("input[type='checkbox']:checked");
+    var total = 0;
+
+    for (var item of items) {
+        total += parseFloat(item.value);
+    }
+
+    document.getElementById("output").innerHTML = "Total Price: " + total;
+}
+</script>
+<h1>PRAKASH KUMAR SINGH</h1>
+<h1>24BCI0213</h1>
+</body>
+</html>
