@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>React App</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+function Welcome(props) {
+  const style = {
+    color: "#2c3e50",
+    backgroundColor: "#ecf0f1",
+    padding: "20px",
+    borderRadius: "10px",
+    fontFamily: "Arial",
+    textAlign: "center"
+  };
+
+  return (
+    <div style={style}>
+      <h1>Hello, {props.name} from {props.city}! 👋</h1>
+      <p>Welcome to our React application. We're glad to have you here. Enjoy exploring and learning React!</p>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Welcome name="PRAKASH KUMAR SINGH" city="INDIA" />);
+</script>
+<h1>PRAKASH KUMAR SINGH</h1>
+<h1>24BCI0213</h1>
+</body>
+</html>
