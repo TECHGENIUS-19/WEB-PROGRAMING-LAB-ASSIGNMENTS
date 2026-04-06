@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>React Image Gallery</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      padding-top: 40px;
+    }
+    .container {
+      text-align: center;
+    }
+    .preview {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+    .preview:hover {
+      transform: scale(1.05);
+    }
+    .gallery {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    .thumb {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: transform 0.3s;
+    }
+    .thumb:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+function Gallery() {
+  const images = [
+    "https://picsum.photos/id/1015/600/400",
+    "https://picsum.photos/id/1016/600/400",
+    "https://picsum.photos/id/1018/600/400",
+    "https://picsum.photos/id/1020/600/400"
+  ];
+  const [selected, setSelected] = React.useState(images[0]);
+  return (
+    <div className="container">
+      <h2>Image Gallery</h2>
+      <h2>PRAKASH KUMAR SINGH</h2>
+      <h2>24BCI0213</h2>
+      <img src={selected} className="preview" />
+      <div className="gallery">
+        {images.map((img, index) => (
+          <img
+            key={index}
+            src={img}
+            className="thumb"
+            onClick={() => setSelected(img)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Gallery />);
+</script>
+</body>
+</html>
