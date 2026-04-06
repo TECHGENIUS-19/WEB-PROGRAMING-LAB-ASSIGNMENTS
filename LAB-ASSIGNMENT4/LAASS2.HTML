@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>React Calculator</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px gray;
+      text-align: center;
+      width: 250px;
+    }
+
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 5px 0;
+    }
+
+    button {
+      margin: 5px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+function Calculator() {
+  const [num1, setNum1] = React.useState("");
+  const [num2, setNum2] = React.useState("");
+  const [result, setResult] = React.useState(0);
+
+  const add = () => setResult(Number(num1) + Number(num2));
+  const subtract = () => setResult(Number(num1) - Number(num2));
+
+  return (
+    <div className="container">
+      <h2>Calculator</h2>
+      <h2>PRAKASH KUMAR SINGH</h2>
+      <h2>24BCI0213</h2>
+      <input type="number" value={num1} onChange={(e) => setNum1(e.target.value)} placeholder="Enter first number" />
+      <input type="number" value={num2} onChange={(e) => setNum2(e.target.value)} placeholder="Enter second number" />
+      <div>
+        <button onClick={add}>Add</button>
+        <button onClick={subtract}>Subtract</button>
+      </div>
+      <div className="result">Result: {result}</div>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Calculator />);
+</script>
+
+</body>
+</html>
