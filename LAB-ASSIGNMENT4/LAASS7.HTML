@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Explorer</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .app {
+      width: 800px;
+      text-align: center;
+    }
+
+    input {
+      padding: 8px;
+      width: 60%;
+    }
+
+    button {
+      padding: 8px;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      width: 180px;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px gray;
+      text-align: left;
+    }
+
+    img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    h4 {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+function fetchBooks(query) {
+  return fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
+    .then(res => res.json())
+    .then(data => data.items || []);
+}
+
+function Header() {
+  return (
+    <div>
+      <h2>Book Explorer</h2>
+      <h3>PRAKASH KUMAR SINGH</h3>
+      <h3>24BCI0213</h3>
+    </div>
+  );
+}
+
+function Search({ onSearch }) {
+  const [query, setQuery] = React.useState("");
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Search books"
+      />
+      <button onClick={() => onSearch(query)}>Search</button>
+    </div>
+  );
+}
+
+function BookCard({ book }) {
+  const info = book.volumeInfo;
+
+  return (
+    <div className="card">
+      <img src={info.imageLinks?.thumbnail || ""} />
+      <h4>{info.title}</h4>
+      <p><strong>Author:</strong> {info.authors?.join(", ")}</p>
+      <p><strong>Publisher:</strong> {info.publisher}</p>
+      <p><strong>Year:</strong> {info.publishedDate}</p>
+    </div>
+  );
+}
+
+function BookList({ books }) {
+  return (
+    <div className="grid">
+      {books.map((b) => (
+        <BookCard key={b.id} book={b} />
+      ))}
+    </div>
+  );
+}
+
+function App() {
+  const [books, setBooks] = React.useState([]);
+
+  const handleSearch = (query) => {
+    fetchBooks(query).then(data => setBooks(data));
+  };
+
+  return (
+    <div className="app">
+      <Header />
+      <Search onSearch={handleSearch} />
+      <BookList books={books} />
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+</script>
+
+</body>
+</html>
