@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Country Explorer</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .app {
+      width: 800px;
+      text-align: center;
+    }
+
+    input {
+      padding: 8px;
+      width: 60%;
+    }
+
+    button {
+      padding: 8px;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      width: 200px;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px gray;
+      text-align: left;
+    }
+
+    img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    h4 {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+function fetchCountries(name) {
+  return fetch(`https://restcountries.com/v3.1/name/${name}`)
+    .then(res => res.json());
+}
+
+function Header() {
+  return (
+    <div>
+      <h2>Country Explorer</h2>
+      <h3>PRAKASH KUMAR SINGH</h3>
+      <h3>24BCI0213</h3>
+    </div>
+  );
+}
+
+function Search({ onSearch }) {
+  const [query, setQuery] = React.useState("");
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Search country"
+      />
+      <button onClick={() => onSearch(query)}>Search</button>
+    </div>
+  );
+}
+
+function CountryCard({ country }) {
+  return (
+    <div className="card">
+      <img src={country.flags.png} />
+      <h4>{country.name.common}</h4>
+      <p><strong>Capital:</strong> {country.capital?.[0]}</p>
+      <p><strong>Population:</strong> {country.population}</p>
+      <p><strong>Region:</strong> {country.region}</p>
+    </div>
+  );
+}
+
+function CountryList({ countries }) {
+  return (
+    <div className="grid">
+      {countries.map((c, index) => (
+        <CountryCard key={index} country={c} />
+      ))}
+    </div>
+  );
+}
+
+function App() {
+  const [countries, setCountries] = React.useState([]);
+
+  const handleSearch = (query) => {
+    fetchCountries(query).then(data => setCountries(data));
+  };
+
+  return (
+    <div className="app">
+      <Header />
+      <Search onSearch={handleSearch} />
+      <CountryList countries={countries} />
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+</script>
+
+</body>
+</html>
